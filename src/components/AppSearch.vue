@@ -12,12 +12,14 @@ import { store } from "../store.js";
 
 <template>
   <div>
-    <label for="searchbar">Cerca il tuo film</label>
-    <input id="searchbar" type="text" v-model="store.searchName">
+    <label for="searchbar">Cerca il tuo film o serie tv </label>
+    <input @keyup-enter="$emit('search')" id="searchbar" type="text" v-model="store.searchName">
+    <button @click="$emit('search')">Cerca</button>
   </div>
-  <button @click="$emit('search')">Cerca</button>
 </template>
 
 <style lang="scss" scoped>
-
+div {
+  color: white;
+}
 </style>

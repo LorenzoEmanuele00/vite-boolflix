@@ -39,10 +39,22 @@ export default {
 </script>
   
 <template>
-  <h1>BOOLFLIX</h1>
-  <AppSearch @search="handleSearch()" />
+  <div class="header">
+    <h1>BOOLFLIX</h1>
+    <AppSearch @search="handleSearch()" />
+  </div>
 </template>
 
 <style lang="scss" scoped>
-
+  .header {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    height: 50px;
+    h1 {
+      color: red;
+    }
+  }
 </style>
