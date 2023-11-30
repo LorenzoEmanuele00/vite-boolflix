@@ -6,6 +6,7 @@ import { store } from "../store.js";
             store
         };
     },
+    
 }
 </script>
 
@@ -14,7 +15,7 @@ import { store } from "../store.js";
     <label for="searchbar">Cerca il tuo film</label>
     <input id="searchbar" type="text" v-model="store.searchName">
   </div>
-  <button @click="$emit('searchTitle')">Cerca</button>
+  <button @click="$emit('search')">Cerca</button>
 </template>
 
 <style lang="scss" scoped>

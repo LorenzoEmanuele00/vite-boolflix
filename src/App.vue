@@ -1,18 +1,34 @@
 <script >
-import AppContent from "./components/AppContent.vue";
+import AppHeader from "./components/AppHeader.vue";
+import AppCard from "./components/AppCard.vue";
+import { store } from "./store.js";
 export default {
     components: {
-      AppContent,
+        AppHeader,
+        AppCard,
     },
     data() {
         return {
+        store
         };
     },
 }
 </script>
 
 <template>
-    <AppContent />
+    <AppHeader />
+    <!-- FILM CARDS -->
+    <section>
+        <div v-for="film in store.films">
+            <AppCard :filmObject="film"/>
+        </div>
+    </section>
+    <!-- SERIE CARDS -->
+    <section>
+        <div v-for="serie in store.tvSeries">
+            <AppCard :filmObject="serie"/>
+        </div>
+    </section>
 </template>
 
 <style lang="scss">
