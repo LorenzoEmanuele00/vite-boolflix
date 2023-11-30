@@ -9,9 +9,10 @@ export default {
     },
     data() {
         return {
-        store
+            store,
         };
     },
+
 }
 </script>
 
@@ -20,13 +21,13 @@ export default {
     <!-- FILM CARDS -->
     <section>
         <div v-for="film in store.films">
-            <AppCard :filmObject="film"/>
+            <AppCard :filmObject="film" :posterImg="store.baseImageURL"/>
         </div>
     </section>
     <!-- SERIE CARDS -->
     <section>
         <div v-for="serie in store.tvSeries">
-            <AppCard :filmObject="serie"/>
+            <AppCard :filmObject="serie" :posterImg="store.baseImageURL"/>
         </div>
     </section>
 </template>

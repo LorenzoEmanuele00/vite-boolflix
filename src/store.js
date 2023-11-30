@@ -5,6 +5,8 @@ export const store = reactive({
     tvSeries: [],
     searchName: "",
 
+    baseImageURL: "https://image.tmdb.org/t/p/original",
+
     // API for search general
     apiURL: "https://api.themoviedb.org/3",
     // API key for autorization
