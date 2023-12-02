@@ -51,10 +51,13 @@ export default {
         .scroll {
             overflow-x: auto;
             height: calc(100% / 2);
+            padding: 10px;
             .row {
+                height: 100%;
                 display: flex;
+                gap: 5px;
                 .col {
-                    display: flex;
+                    height: 100%;
                 }
             }
         }

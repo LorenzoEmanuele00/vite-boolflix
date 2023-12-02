@@ -45,12 +45,12 @@ export default {
     </div>
 
     <div class="card card-text" :class="!flag ? 'd-none' : ''" @mouseleave="changeFalse()">
-        <h3>Titolo: {{ filmObject.title ? filmObject.title : filmObject.name }}</h3>
-        <h4>Titolo originale: {{ filmObject.original_title ? filmObject.original_title : filmObject.original_name }}</h4>
-        <p v-if="!hasFlag">Lingua: {{ filmObject.original_language }}</p>
+        <p><span class="text-before">TITOLO: </span><br> {{ filmObject.title ? filmObject.title : filmObject.name }}</p>
+        <p><span class="text-before">TITOLO ORIGINALE: </span><br> {{ filmObject.original_title ? filmObject.original_title : filmObject.original_name }}</p>
+        <p v-if="!hasFlag"><span class="text-before">LINGUA: </span> {{ filmObject.original_language }}</p>
         <img class="language" v-else :src="getImagePath(filmObject.original_language)" alt="">
         <div class="votation">
-            <p>Voto: {{ roundedNumber }}</p>
+            <p><span class="text-before">VOTO: </span> {{ roundedNumber }}</p>
             <i v-if="roundedNumber < 1" class="fa-regular fa-star"></i>
             <i v-else class="fa-solid fa-star"></i>
             <i v-if="roundedNumber < 2" class="fa-regular fa-star"></i>
@@ -71,13 +71,19 @@ export default {
 @import "@fortawesome/fontawesome-free/css/all.css";
 
 .card {
-    border: 1px solid black;
-    width: 200px;
-    height: 350px;
+    height: 100%;
+    aspect-ratio: 1.5 / 2;
     &.card-image {
+        .poster {
+            display: block;
+            height: 100%;
+            aspect-ratio: 1.5 / 2;
+        }
         .placeholder {
+            height: 100%;
+            aspect-ratio: 1.5 / 2;
             text-align: center;
-            margin-top: 50px;
+            padding-top: 50px;
         }
     }
     
@@ -88,18 +94,13 @@ export default {
         background-color: black;
         color: white;
         padding: 10px;
-        width: 200px;
-        height: 350px;
         overflow-y: auto;
-
-    }
-    .poster {
-        width: 200px;
-        height: 350px;
-        
-    }
-    .placeholder {
-        width: 200px;
+        p {
+            padding: 5px;
+        }
+        .text-before {
+            font-weight: bold;
+        }
     }
     .language {
         width: 80px;
