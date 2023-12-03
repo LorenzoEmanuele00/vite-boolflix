@@ -20,21 +20,25 @@ export default {
         <AppHeader />
         <div class="card-container">
             <!-- FILM CARDS -->
-            <h2 v-if="store.searchName != ''" class="sec">FILM</h2>
-            <h2 v-else class="sec">FILM POPOLARI</h2>
+            <h2 v-if="store.popularF" class="sec">FILM POPOLARI</h2>
+            <h2 v-else class="sec">FILM</h2>
             <section class="scroll">
-                <div class="row">
-                    <div class="col" v-for="film in store.films">
+                <h2 class="load" v-if="store.loadingF"> BOOLFLIX FILM LOADING...</h2>
+                <div v-else class="row">
+                    <h2 v-if="store.tvSeries.length === 0">NESSUN FILM TROVATO</h2>
+                    <div v-else class="col" v-for="film in store.films">
                         <AppCard :filmObject="film" :posterImg="store.baseImageURL"/>
                     </div>
                 </div>
             </section>
             <!-- SERIE CARDS -->
-            <h2 v-if="store.searchName != ''" class="sec">SERIE TV</h2>
-            <h2 v-else class="sec">SERIE TV POPOLARI</h2>
+            <h2 v-if="store.popularS" class="sec">SERIE TV POPOLARI</h2>
+            <h2 v-else class="sec">SERIE TV</h2>
             <section class="scroll">
-                <div class="row">
-                    <div class="col" v-for="serie in store.tvSeries">
+                <h2 class="load" v-if="store.loadingS"> BOOLFLIX SERIE TV LOADING...</h2>
+                <div v-else class="row">
+                    <h2 v-if="store.tvSeries.length === 0">NESSUNA SERIE TROVATA</h2>
+                    <div v-else class="col" v-for="serie in store.tvSeries">
                         <AppCard :filmObject="serie" :posterImg="store.baseImageURL"/>
                     </div>
                 </div>
@@ -60,6 +64,10 @@ export default {
             overflow-x: auto;
             height: calc( (100% - 100px ) / 2);
             padding: 0 10px 10px 10px;
+            .load {
+                color: white;
+                padding: 50px;
+            }
             .row {
                 height: 100%;
                 display: flex;

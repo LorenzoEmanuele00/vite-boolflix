@@ -4,6 +4,10 @@ export const store = reactive({
     films: [],
     tvSeries: [],
     searchName: "",
+    popularF: true,
+    popularS: true,
+    loadingF: false,
+    loadingS: false,
 
     baseImageURL: "https://image.tmdb.org/t/p/original",
 
