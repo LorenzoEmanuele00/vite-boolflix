@@ -29,7 +29,7 @@ export default {
             return this.flags.includes(this.filmObject.original_language);
         },
         roundedNumber() {
-            return Math.round(this.filmObject.vote_average / 2) ;
+            return Math.ceil(this.filmObject.vote_average / 2) ;
         },
         hasPoster() {
             return this.filmObject.poster_path !== null
@@ -41,7 +41,7 @@ export default {
 <template>
     <div class="card card-image" @mouseenter="changeTrue()" :class="!flag ? '' : 'd-none'">
         <img v-if="hasPoster" class="poster" :src="getPoster" alt="">
-        <h2 v-else class="placeholder">No Poster Avaible</h2>       
+        <h2 v-else class="placeholder">NO POSTER AVAIBLE</h2>       
     </div>
 
     <div class="card card-text" :class="!flag ? 'd-none' : ''" @mouseleave="changeFalse()">
@@ -62,7 +62,7 @@ export default {
             <i v-if="roundedNumber < 5" class="fa-regular fa-star"></i>
             <i v-else class="fa-solid fa-star"></i>
         </div>
-        <p v-show="filmObject.overview !==''">Sommario: {{ filmObject.overview }}</p>
+        <p v-show="filmObject.overview !==''"><span class="text-before">SOMMARIO: </span><br> {{ filmObject.overview }}</p>
         
     </div>
 </template>
@@ -84,6 +84,7 @@ export default {
             aspect-ratio: 1.5 / 2;
             text-align: center;
             padding-top: 50px;
+            background-color: white;
         }
     }
     

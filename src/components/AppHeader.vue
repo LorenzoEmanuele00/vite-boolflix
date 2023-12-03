@@ -11,6 +11,9 @@ export default {
       store
     };
   },
+  created() {
+    this.searchPopular();
+  },
   methods: {
     handleSearch() {
       const params= {
@@ -29,6 +32,27 @@ export default {
       // REQUEST FOR TV SERIES
       axios
         .get(`${this.store.apiURL}/search/tv`, {params})
+        .then((resp) => {
+          this.store.tvSeries = resp.data.results;
+          console.log(this.store.tvSeries);
+        })
+    },
+    searchPopular() {
+      const params= {
+        api_key: "13a00727a823b611cbc82074c48a77bb",
+      }
+
+      // REQUEST FOR MOVIE
+      axios
+        .get(`${this.store.apiURL}/movie/popular`, {params})
+        .then((resp) => {
+          this.store.films = resp.data.results;
+          console.log(this.store.films);
+        })
+
+      // REQUEST FOR TV SERIES
+      axios
+        .get(`${this.store.apiURL}/tv/popular`, {params})
         .then((resp) => {
           this.store.tvSeries = resp.data.results;
           console.log(this.store.tvSeries);
